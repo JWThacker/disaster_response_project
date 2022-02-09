@@ -78,7 +78,8 @@ def save_data(df, database_filename):
     
     # create a SQLAlchemy engine to the database
     engine = create_engine(path)
-    table_name = database_filename.strip('.db')
+    #table_name = database_filename.strip('.db')
+    table_name = 'message_categories'
     # save the database
     df.to_sql(table_name, engine, index=False, if_exists='replace')
     pass  
