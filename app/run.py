@@ -56,26 +56,6 @@ def index():
     fig1 = px.bar(data_frame=agg_df, x='names', y='counts', title='Overview of Training Dataset')
     fig2 = px.bar(data_frame=response_class_df, x='class', y='frequency', title='Response Class Bar Graph')
     graphs = [fig1, fig2]
-    #graphs = [
-    #    {
-    #        'data': [
-    #            Bar(
-    #                x=genre_names,
-    #                y=genre_counts
-    #            )
-    #        ],
-#
-#            'layout': {
-#                'title': 'Distribution of Message Genres',
-#                'yaxis': {
-#                    'title': "Count"
-#                },
-#                'xaxis': {
-#                    'title': "Genre"
-#                }
-#            }
-#        }
-#    ]
     
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
