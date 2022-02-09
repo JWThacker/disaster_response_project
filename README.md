@@ -21,9 +21,12 @@ Your project will include a web app where an emergency worker can input a new me
 
    * 'ETL Pipeline Preparation.ipynb' - Jupyter notebook for preparing the ETL pipeline and testing the pipeline before it was implemented in 'process_data.py'
    * 'ML Pipeline Preparation.ipynb' - Jupyter notebook for building the classifier
-   * 'train_classifer.py' - Python script for trainig the message classsifier
-   * 'process_data.py' - Python script for building the ETL pipeline
-   * 'run.py' - Python script for running the Flask script
+   * 'models/train_classifer.py' - Python script for trainig the message classsifier
+   * 'data/process_data.py' - Python script for building the ETL pipeline
+   * 'app/run.py' - Python script for running the Flask script
+   * 'models/message_categories.db' - SQLite database of the cleaned and tokenized message data
+   * 'models/classifier.pkl' - saved classifier for use in 'app/run.py'
+   * 'app/templates' - this folder contains the .HTMLs for the Flask app.
 
 
 ### Instructions:
@@ -38,3 +41,12 @@ Your project will include a web app where an emergency worker can input a new me
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+### Results
+The results of this project is a web application that displays graphs (bottom) in the welcome page and then possible message categories when an image is input to the text box (top).
+
+![](img/./app_img_1.png)
+![](img/./app_img_2.png)
+
+### License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
