@@ -5,6 +5,14 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''load data given filepath for each set of data
+
+       params:
+           message_filepath - a path the disaster message dataset
+           categories_filepath - a path to the disaster categories dataset
+       returns:
+           df - a dataframe of the merged disaster messages and categories dataframes
+    '''
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
     
@@ -18,6 +26,13 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''clean the disaster messages and categories dataframe
+
+       params:
+           df - a dataframe of the messages and categories dataframe
+       returns:
+           df (copy) - a copy of the cleaned dataframe
+    '''
     # create a dataframe of the 36 individual category columns
     categories = df['categories'].str.split(';', expand=True)
     
@@ -33,6 +48,7 @@ def clean_data(df):
     for column in categories:
         # set each value to be the last character of the string
         categories[column] = categories[column].str[-1]
+        categories[column]  = categories[column].str.replace('2', '1')
     
         # convert column from string to numeric
         categories[column] = categories[column].astype('int')
@@ -51,6 +67,12 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''save the dataframe to a SQLite database
+
+       params:
+           df - a dataframe
+           database_filename - a path to where you want df saved
+    '''
     # Define database file name
     path = 'sqlite:///' + database_filename
     
@@ -63,6 +85,8 @@ def save_data(df, database_filename):
 
 
 def main():
+    '''the driver function
+    '''
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]

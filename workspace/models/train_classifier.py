@@ -22,6 +22,15 @@ nltk.download('averaged_perceptron_tagger')
 lemmatizer = WordNetLemmatizer()
 
 def load_data(database_filepath):
+    '''loads the data from the database
+
+        params:
+            database_filepath - the path to the dataframe
+        returns:
+            X - the features
+            Y - the response
+            Y.columns - the response classes
+    '''
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql('SELECT * FROM message_categories', engine)
     X = df.loc[:, 'message']
@@ -84,6 +93,8 @@ def save_model(model, model_filepath):
 
 
 def main():
+    '''the drive function
+    '''
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
